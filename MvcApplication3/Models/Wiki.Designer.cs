@@ -24,14 +24,14 @@ namespace MvcApplication3.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    public partial class Entities : ObjectContext
+    public partial class WikiEntities : ObjectContext
     {
         #region Constructors
     
         /// <summary>
         /// Initializes a new Entities object using the connection string found in the 'Entities' section of the application configuration file.
         /// </summary>
-        public Entities() : base("name=Entities", "Entities")
+        public WikiEntities() : base("name=Entities", "Entities")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();
@@ -40,7 +40,7 @@ namespace MvcApplication3.Models
         /// <summary>
         /// Initialize a new Entities object.
         /// </summary>
-        public Entities(string connectionString) : base(connectionString, "Entities")
+        public WikiEntities(string connectionString) : base(connectionString, "Entities")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();
@@ -49,7 +49,7 @@ namespace MvcApplication3.Models
         /// <summary>
         /// Initialize a new Entities object.
         /// </summary>
-        public Entities(EntityConnection connection) : base(connection, "Entities")
+        public WikiEntities(EntityConnection connection) : base(connection, "Entities")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();

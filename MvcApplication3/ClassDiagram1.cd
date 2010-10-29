@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MvcApplication3.Models.WikiEntities" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEIAAAAAAAAAAAAAAAAAAAAAEAAACAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MvcApplication3.Models.Articles" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAggAAAFAAAAABAAAABIAAEAAAAAAABAAUAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Arial" Size="6.75" />
+</ClassDiagram>

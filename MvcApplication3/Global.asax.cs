@@ -18,8 +18,8 @@ namespace MvcApplication3
 
             routes.MapRoute(
                 "Default", // Route name
-                "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+                "{controller}/{action}/{title}", // URL with parameters
+                new { controller = "Article", action = "Details", title = "start" } // Parameter defaults
             );
 
         }
