@@ -1,0 +1,25 @@
+/*/*.user           #User specific solution and project settings
+/*.user
+/*/*.suo
+/*.suo
+/*/*.sln.cache
+/*.sln.cache
+[bB]in/
+[bB]in/*
+[oO]bj/
+[oO]bj/*
+/*/*.xap
+/*.xap
+/*/_ReSharper.*  #Resharper database
+/_ReSharper.*  #Resharper database
+TestResults/   #MSTest result files
+TestResults/*   #MSTest result files
+/TestResults/   #MSTest result files
+/TestResults/*   #MSTest result files
+/*/*.pdb
+/*.pdb
+# We might need to add these later
+#/MvcApplication2/App_Data/Database1.mdf
+#/MvcApplication2/App_Data/Database1_log.LDF
+#MvcApplication2/App_Data/Database1.mdf
+#MvcApplication2/App_Data/Database1_log.LDF
