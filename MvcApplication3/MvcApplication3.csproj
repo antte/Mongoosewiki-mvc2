@@ -90,6 +90,9 @@
     </Content>
     <Content Include="Global.asax" />
     <Content Include="Views\Article\Details.aspx" />
+    <Content Include="Views\Article\Search.aspx" />
+    <Content Include="Views\Article\SearchForm.ascx" />
+    <Content Include="Views\Article\SearchResults.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

@@ -12,11 +12,29 @@ namespace MvcApplication3.Models
         public string Title { get; set;}
         public string Body { get; set;}
 
-        private ObjectSet<Articles> articleEntities = new WikiEntities().Articles;
+        private ObjectSet<Articles> articleEntities = new WikiDb().Articles;
 
         public Article(String title)
         {
             this.setByTitle(title);
+        }
+
+        /**
+         * Create article from a Articles db object (ADO entity) (don't know if that's the correct terminology)
+         * @param name="article" we run First on article, only one expected
+         */
+        private Article(Articles article)
+        {
+            try
+            {
+                this.Id = article.Id;
+                this.Title = article.Title;
+                this.Body = article.Body;
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         /*
@@ -39,5 +57,46 @@ namespace MvcApplication3.Models
             }
         }
 
+
+        internal static List<Article> Search(string q)
+        {
+
+            IQueryable<Articles> articlesDBOByTitle =   from a in new WikiDb().Articles
+                                                        where a.Title.Contains(q)
+                                                        select a;
+            IQueryable<Articles> articlesDBOByBody =    from a in new WikiDb().Articles
+                                                        where a.Body.Contains(q)
+                                                        select a;
+
+            List<Article> articles = new List<Article>();
+
+            // Add all articles found by title to the return value
+            foreach (Articles articleDBO in articlesDBOByTitle) 
+            {
+                articles.Add(new Article(articleDBO));
+            }
+
+            //Only add articles found by body if they dont already exist
+            foreach (Articles articleDBO in articlesDBOByBody)
+            {
+                Boolean DBOAlreadyInArticles = false;
+                foreach (Article article in articles)
+                {
+                    if (article.Title == articleDBO.Title)
+                    {
+                        DBOAlreadyInArticles = true;
+                    }
+                }
+
+                if (!DBOAlreadyInArticles)
+                {
+                    articles.Add(new Article(articleDBO));
+                }
+
+            }
+
+            return articles;
+
+        }
     }
 }
