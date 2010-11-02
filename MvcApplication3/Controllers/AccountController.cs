@@ -50,6 +50,7 @@ namespace MvcApplication3.Controllers
                     }
                     else
                     {
+                        //sätt användaren i session!
                         Session["username"] = model.UserName;
                         return RedirectToAction("Details/start", "Article");
                     }

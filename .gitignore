@@ -18,8 +18,7 @@ TestResults/*   #MSTest result files
 /TestResults/*   #MSTest result files
 /*/*.pdb
 /*.pdb
-# We might need to add these later
-#/MvcApplication2/App_Data/Database1.mdf
-#/MvcApplication2/App_Data/Database1_log.LDF
-#MvcApplication2/App_Data/Database1.mdf
-#MvcApplication2/App_Data/Database1_log.LDF
+/MvcApplication3/App_Data
+MvcApplication3/App_Data
+/MvcApplication3/App_Data/*
+MvcApplication3/App_Data/*
