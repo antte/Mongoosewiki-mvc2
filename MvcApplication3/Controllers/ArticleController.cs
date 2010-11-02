@@ -51,6 +51,31 @@ namespace MvcApplication3.Controllers
                 return View();
             }
         }
+
+        //
+        // POST: /Article/Search
+
+        [HttpPost]
+        public ActionResult SearchResults(FormCollection collection)
+        {
+            String q = collection.GetValue("q").AttemptedValue;
+            ViewData["q"] = q;
+            ViewData["articles"] = new List<Article>();
+            List<Article> articlesFound = Article.Search(q);
+            if (articlesFound.Count != 0)
+            {
+                ViewData["articles"] = articlesFound;
+            }
+            return View();
+        }
+
+        //
+        // GET: /Article/Search
+
+        public ActionResult Search()
+        {
+            return View();
+        }
         
         //
         // GET: /Article/Edit/5

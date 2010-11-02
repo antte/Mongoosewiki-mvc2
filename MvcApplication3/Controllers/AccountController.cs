@@ -50,7 +50,9 @@ namespace MvcApplication3.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        //sätt användaren i session!
+                        Session["username"] = model.UserName;
+                        return RedirectToAction("Details/start", "Article");
                     }
                 }
                 else
@@ -70,8 +72,8 @@ namespace MvcApplication3.Controllers
         public ActionResult LogOff()
         {
             FormsService.SignOut();
-
-            return RedirectToAction("Index", "Home");
+            Session["username"] = null;
+            return RedirectToAction("Details/start", "Article");
         }
 
         // **************************************
