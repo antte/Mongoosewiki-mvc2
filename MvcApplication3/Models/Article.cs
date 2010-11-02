@@ -32,7 +32,9 @@ namespace MvcApplication3.Models
             {
                 this.Id = article.Id;
                 this.Title = article.Title;
-                this.Body = article.Body;
+                ArticleTranslator t = new ArticleTranslator();
+                String body = article.Body;
+                this.Body = t.translateAllPatterns(body);
             }
             catch (Exception)
             {
@@ -63,7 +65,9 @@ namespace MvcApplication3.Models
             {
                 this.Id = articles.First().Id;
                 this.Title = articles.First().Title;
-                this.Body = articles.First().Body;
+                ArticleTranslator t = new ArticleTranslator();
+                String body = articles.First().Body;
+                this.Body = t.translateAllPatterns(body);
             }
             catch (Exception)
             {
@@ -112,11 +116,6 @@ namespace MvcApplication3.Models
 
             return articles;
 
-        }
-
-        internal Articles ToArticles()
-        {
-            return this.articleEntities.Single(a => a.Id == this.Id);
         }
     }
 }

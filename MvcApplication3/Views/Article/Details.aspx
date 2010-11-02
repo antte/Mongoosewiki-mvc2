@@ -12,6 +12,6 @@
 
     <h2><%: Model.Title %></h2>
 
-    <p><%: Model.Body %></p>
+    <p><%= Model.Body %></p>
 
 </asp:Content>

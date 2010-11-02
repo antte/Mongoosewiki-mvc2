@@ -20,7 +20,7 @@
        { %>
         <li>
             <h3><a href="/Article/Details/<%:article.Title %>"><%:article.Title %></a></h3>
-            <p><%:article.Body %></p>
+            <p><%=article.Body %></p>
         </li>
     <% } %>
     </ul>

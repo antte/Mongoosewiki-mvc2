@@ -77,11 +77,13 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Article.cs" />
     <Compile Include="Models\ArticleDoesNotExistException.cs" />
+    <Compile Include="Models\Translation.cs" />
     <Compile Include="Models\Wiki.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Wiki.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\ArticleTranslator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
