@@ -11,7 +11,7 @@ namespace MvcApplication3.Models
 
         public int Id { get; set;}
         public string Title { get; set;}
-        public string Body { get; set;}
+        public string Body { get; set; }
 
         private ObjectSet<Articles> articleEntities = new WikiDb().Articles;
 
@@ -32,14 +32,17 @@ namespace MvcApplication3.Models
             {
                 this.Id = article.Id;
                 this.Title = article.Title;
-                ArticleTranslator t = new ArticleTranslator();
-                String body = article.Body;
-                this.Body = t.translateAllPatterns(body);
+                
             }
             catch (Exception)
             {
 
             }
+        }
+
+        public string getBodyToHTML()
+        {
+            return new ArticleTranslator().translateAllPatterns(this.Body);
         }
 
         /*
@@ -65,9 +68,7 @@ namespace MvcApplication3.Models
             {
                 this.Id = articles.First().Id;
                 this.Title = articles.First().Title;
-                ArticleTranslator t = new ArticleTranslator();
-                String body = articles.First().Body;
-                this.Body = t.translateAllPatterns(body);
+                this.Body = articles.First().Body;
             }
             catch (Exception)
             {
