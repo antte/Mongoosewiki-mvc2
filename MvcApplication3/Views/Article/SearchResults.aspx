@@ -10,6 +10,11 @@
 
     <% Html.RenderPartial("SearchForm", ViewData); %>
 
+    <%if (((List<MvcApplication3.Models.Article>)ViewData["articles"]).Count == 0)
+      {%>
+      <h2>Inga resultat</h2>
+    <% } %>
+
     <ul id="searchResults">
     <% foreach (MvcApplication3.Models.Article article in (List<MvcApplication3.Models.Article>)ViewData["articles"])
        { %>
