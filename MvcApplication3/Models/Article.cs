@@ -31,11 +31,15 @@ namespace MvcApplication3.Models
             {
                 this.Id = articles.First().Id;
                 this.Title = articles.First().Title;
-                this.Body = articles.First().Body;
+                ArticleTranslator t = new ArticleTranslator();
+                String body = articles.First().Body;
+                this.Body = t.translateAllPatterns(body);
+                //this.Body = t.translate(articles.First().Body);
+                //this.Body = articles.First().Body;
             }
             catch (Exception)
             {
-
+                
             }
         }
 
