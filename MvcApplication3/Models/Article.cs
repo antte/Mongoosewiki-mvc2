@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Objects;
+using System.Web.Mvc;
 namespace MvcApplication3.Models
 {
     public class Article
@@ -13,6 +14,8 @@ namespace MvcApplication3.Models
         public string Body { get; set;}
 
         private ObjectSet<Articles> articleEntities = new WikiDb().Articles;
+
+        public Article() { }
 
         public Article(String title)
         {
@@ -38,9 +41,20 @@ namespace MvcApplication3.Models
         }
 
         /*
+         * Create a new Article from the FormCollection data
+         */
+        public Article(FormCollection collection)
+        {
+            this.Id = -1;
+            this.Title = collection["Title"];
+            this.Body = collection["Body"];
+        }
+
+        /*
          * Populates Article object with data from the database.
          */
-        private void setByTitle(string title) { 
+        private void setByTitle(string title) {
+            
             var articles = from a in articleEntities
                            where a.Title == title
                            select a;
@@ -53,8 +67,9 @@ namespace MvcApplication3.Models
             }
             catch (Exception)
             {
-
+                throw new ArticleDoesNotExistException();
             }
+
         }
 
 
@@ -97,6 +112,11 @@ namespace MvcApplication3.Models
 
             return articles;
 
+        }
+
+        internal Articles ToArticles()
+        {
+            return this.articleEntities.Single(a => a.Id == this.Id);
         }
     }
 }

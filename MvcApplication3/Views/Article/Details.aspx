@@ -6,6 +6,8 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     
+    <% Html.RenderPartial("ArticleMenu"); %>
+    
     <% Html.RenderPartial("SearchForm"); %>
 
     <h2><%: Model.Title %></h2>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MvcApplication3.Models;
+using System.Data.Objects;
 
 namespace MvcApplication3.Controllers
 {
@@ -17,7 +18,7 @@ namespace MvcApplication3.Controllers
         {
             return View();
         }
-
+         
         //
         // GET: /Article/Details/5
 
@@ -26,30 +27,22 @@ namespace MvcApplication3.Controllers
             return View(new Article(title));
         }
 
-        //
-        // GET: /Article/Create
-
-        public ActionResult Create()
-        {
-            return View();
-        } 
-
-        //
-        // POST: /Article/Create
-
-        [HttpPost]
         public ActionResult Create(FormCollection collection)
-        {
+        {/*
             try
-            {
-                // TODO: Add insert logic here
+            {*/
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
+                WikiDb WikiDb = new WikiDb();
+                
+                
                 return View();
+                //return RedirectToAction("View");
+                /*
             }
+            catch (Exception e)
+            {
+                e.
+            }*/
         }
 
         //
@@ -80,27 +73,70 @@ namespace MvcApplication3.Controllers
         //
         // GET: /Article/Edit/5
  
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string title)
         {
-            return View();
+            return View(new Article(title));
         }
 
-        //
+        // Edit frågar om inte create kan skapa en artikel om den inte redan finns
         // POST: /Article/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(string title, FormCollection collection)
         {
+
+            Article article = null;
+            ViewData["success"] = false;
+            WikiDb WikiDb = new WikiDb();
+            
+            //If we cant check session or session username isnt set, this user cannot edit article
+            try {
+                if (Session["username"] == null) {
+                    ViewData["error_message"] = "You have to be logged in to edit an article.";
+                    return View(new Article(title));
+                }
+            } catch {
+                ViewData["error_message"] = "You have to be logged in to edit an article.";
+                return View(new Article(title));
+            }
+
             try
             {
-                // TODO: Add update logic here
- 
-                return RedirectToAction("Index");
+                article = new Article(title);
             }
-            catch
+            catch (ArticleDoesNotExistException)
             {
-                return View();
+                try
+                {
+                    
+                    //Articles newArticle = new Articles { Title = collection["Title"], Body = collection["Body"] };
+                    Articles newArticle = new Articles();
+                    newArticle.Title = collection["Title"];
+                    newArticle.Body = collection["Body"];
+                    WikiDb.AddToArticles(newArticle);
+                    WikiDb.SaveChanges();
+                    
+                    //ViewData["debug"] += collection["Id"];
+                    RedirectToAction("Details/" + title);
+                }
+                catch (Exception)
+                {
+                    ViewData["debug"] += "article doesnt exist and cant redirect";
+                    return View(new Article());
+                }
             }
+
+            if (article == null)
+            {
+                return View(new Article());
+            }
+
+            UpdateModel(WikiDb.Articles.Single(a => a.Id == article.Id), collection.ToValueProvider());
+            WikiDb.SaveChanges();
+            ViewData["success"] = true;
+
+            return View(new Article(title));
+
         }
 
         //

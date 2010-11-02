@@ -76,6 +76,7 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Article.cs" />
+    <Compile Include="Models\ArticleDoesNotExistException.cs" />
     <Compile Include="Models\Wiki.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -89,7 +90,9 @@
       <DependentUpon>mongoose-wiki.mdf</DependentUpon>
     </Content>
     <Content Include="Global.asax" />
+    <Content Include="Views\Article\ArticleMenu.ascx" />
     <Content Include="Views\Article\Details.aspx" />
+    <Content Include="Views\Article\Edit.aspx" />
     <Content Include="Views\Article\Search.aspx" />
     <Content Include="Views\Article\SearchForm.ascx" />
     <Content Include="Views\Article\SearchResults.aspx" />
