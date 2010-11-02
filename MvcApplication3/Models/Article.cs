@@ -29,7 +29,9 @@ namespace MvcApplication3.Models
             {
                 this.Id = article.Id;
                 this.Title = article.Title;
-                this.Body = article.Body;
+                ArticleTranslator t = new ArticleTranslator();
+                String body = article.Body;
+                this.Body = t.translateAllPatterns(body);
             }
             catch (Exception)
             {
