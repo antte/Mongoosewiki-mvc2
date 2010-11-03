@@ -342,3 +342,62 @@ div#title
 {
     width: 6em;
 }
+
+input#Title 
+{
+    font-family: Arial, Verdana, Sans-Serif;
+    font-weight: bold;
+    padding: 3px;
+    width: 40%;
+    font-size: 20px;
+}
+
+textarea#Body 
+{
+    width: 95%;
+    height: 400px;
+    padding: 3px;
+    font-size: 12px;
+}
+
+#SearchForm 
+{
+    float: right;
+    background: #888;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    padding: 3px 6px;
+    overflow: hidden;
+}
+
+#SearchForm * 
+{
+    float: left;
+    margin: 5px;
+}
+
+input#q 
+{
+    font-size: 14px;
+    padding: 3px;
+}
+
+#searchResults li 
+{
+    max-height: 400px;
+    list-style: none;
+    margin-bottom: 40px;
+}
+
+#searchResults li * 
+{
+    margin: 0;
+    padding: 0;
+    font-size: 90%;
+}
+
+#searchResults li h3 a
+{
+    font-size: 24px;
+}
