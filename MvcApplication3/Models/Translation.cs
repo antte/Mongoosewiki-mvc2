@@ -24,11 +24,11 @@ namespace MvcApplication3.Models
 
         public String translate(String pArticleBody)
         {
-            //return pArticleBody;
-            //Regex r = new Regex(this.needle, RegexOptions.None);
-            //pArticleBody = HttpUtility.HtmlEncode(pArticleBody);
-            String newArticleBody = Regex.Replace(pArticleBody,this.needle, this.replacement);
-            //newArticleBody = HttpUtility.HtmlEncode("&lt;");
+            String newArticleBody = null;
+            if (pArticleBody != null)
+            {
+                newArticleBody = Regex.Replace(pArticleBody, this.needle, this.replacement);
+            }
 
             return newArticleBody;
 

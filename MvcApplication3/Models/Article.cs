@@ -32,6 +32,7 @@ namespace MvcApplication3.Models
             {
                 this.Id = article.Id;
                 this.Title = article.Title;
+                this.Body = article.Body;
                 
             }
             catch (Exception)
