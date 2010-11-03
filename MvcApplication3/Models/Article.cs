@@ -11,7 +11,7 @@ namespace MvcApplication3.Models
 
         public int Id { get; set;}
         public string Title { get; set;}
-        public string Body { get; set; }
+        public string Body { get; set;}
 
         private ObjectSet<Articles> articleEntities = new WikiDb().Articles;
 
@@ -32,7 +32,8 @@ namespace MvcApplication3.Models
             {
                 this.Id = article.Id;
                 this.Title = article.Title;
-                
+                this.Body = article.Body;
+
             }
             catch (Exception)
             {
